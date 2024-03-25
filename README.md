@@ -59,7 +59,7 @@ After deploying the tool to the pod, execute it using one of the following metho
 
 ## Example
 
-Pod with /var/log host path mounted snippet
+Pod with /var/log host path mounted yaml snippet
 ```
     ...
     volumeMounts:
@@ -70,6 +70,19 @@ Pod with /var/log host path mounted snippet
       hostPath:
         path: /var/log
 ```
+Read logs role yaml snippet example
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: get-logs-role
+rules:
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["get"]
+```
+
 `./k8s-token-hunter --generate-suffix-list="/tmp/combinations.txt" --suffix-file="/tmp/combinations.txt" --mount-path="/host/var/log"`
 
 ## Documentation
