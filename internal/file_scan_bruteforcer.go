@@ -35,10 +35,9 @@ func presentPodInfo(kubeletPodsMapping *model.KubeletPodsSpec, dstPod *model.Pod
 
 // ExecuteBruteForce attempts to find a valid token by brute-forcing suffix combinations againts /var/lib/kubelet/pods/*.
 func ExecuteBruteForce(config *model.Config) []*model.Result {
-	// edit config.hosstmountpath to include /pods...
 	hostVarLogPods := filepath.Join(config.HostMountPath, "pods")
 	varLogPodsFiles, err := fileops.MapFiles(hostVarLogPods)
-	// varLogPodsFiles, err := fileops.MapFiles(config.HostMountPath)
+
 	if err != nil {
 		log.Fatalf("Error during command execution: %v\n", err)
 	}
@@ -174,5 +173,4 @@ func huntForToken(originalPath, backupPath, tokenFilePath string, dstPod *model.
 	}
 
 	return false, "", nil
-
 }

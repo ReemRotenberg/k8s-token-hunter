@@ -55,7 +55,6 @@ func PerformBackUp(originalPath string) (string, string, error) {
 		return "", "", err // Return an empty string and the error
 	}
 
-	// log.Println("Backed up: ", backupPath)
 	return originalPath, backupPath, nil // Return the backup path and a nil error
 }
 
